@@ -79,6 +79,5 @@ class TestQuestion(unittest.TestCase):
         self.assertEqual(str(e.exception), "Choices cannot contain empty strings.")
 
 
-# Run the tests (requires the `unittest` module)
 if __name__ == "__main__":
     unittest.main()
