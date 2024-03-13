@@ -4,11 +4,11 @@
     "question_type": "multiple_choice",
     "question_text": "What is the capital of England?",
     "answer": "London",
-    "choices": ["Paris", "Berlin", "Madrid", "England"],
+    "choices": ["Paris", "Berlin", "Madrid", "London"],
     "question_active": false,
     "number_of_occurences": 0,
     "correct_answers": 0,
-    "answer_success_ratio": 0.0
+    "answer_success_percentage": "0%"
   },
   {
     "question_id": "#2",
@@ -18,6 +18,6 @@
     "question_active": true,
     "number_of_occurrences": 0,
     "correct_answers": 0,
-    "answer_success_ratio": 0.0
+    "answer_success_percentage": "0%"
   }
 ]
