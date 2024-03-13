@@ -1,5 +1,4 @@
 import json
-import os
 
 
 class Question:
@@ -57,24 +56,16 @@ class FreeForm(Question):
             return False
 
 
-def load_questions():
+def load_questions(filename):
     try:
-        with open("questions.json", "r") as f:
+        with open(filename, "r") as f:
             return json.load(f)
     except FileNotFoundError:
-        raise FileNotFoundError("Error: file question.json not found")
+        raise FileNotFoundError(f"Error: file {filename} not found")
 
 
-def save_question(question):
-
-    filename = "questions.json"
-    try:
-        os.path.exists(filename)
-        with open(filename, "r") as f:
-            questions = json.load(f)
-    except FileNotFoundError:
-        raise FileNotFoundError("Error: file question.json not found")
-
+def save_question(filename, question):
+    questions = load_questions(filename)
     questions.append(question)
 
     with open(filename, "w") as f:
