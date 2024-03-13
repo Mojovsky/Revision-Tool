@@ -83,3 +83,15 @@ def save_question(question):
 
 def create_index():
     questions = load_questions()
+    if questions == []:
+        return "#1"
+    else:
+        for question in questions:
+            question_id = question["question_id"].strip("#")
+            highest_id = int(question_id)
+
+        new_index = f"#{highest_id + 1}"
+        return new_index
+
+
+print(create_index())
