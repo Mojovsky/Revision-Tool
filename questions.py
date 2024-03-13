@@ -48,7 +48,7 @@ class FreeForm(Question):
         )
         self.correct_answer = correct_answer
 
-    def check_answer(self, user_answer):
+    def check_answer(self, user_answer: str):
         if user_answer == self.correct_answer:
             # Implement logic for logging occurences and success ratio
             return True
@@ -56,7 +56,7 @@ class FreeForm(Question):
             return False
 
 
-def load_questions(filename):
+def load_questions(filename: str):
     try:
         with open(filename, "r") as f:
             return json.load(f)
@@ -64,7 +64,7 @@ def load_questions(filename):
         raise FileNotFoundError(f"Error: file {filename} not found")
 
 
-def save_question(filename, question):
+def save_question(filename: str, question: dict):
     questions = load_questions(filename)
     questions.append(question)
 
@@ -85,4 +85,5 @@ def create_index():
         return new_index
 
 
-print(create_index())
+def answer_success_ratio(occurences: int):
+
