@@ -3,57 +3,46 @@ import json
 
 class Question:
 
-    def __init__(self, question_id, question_text, question_type, question_active):
-        self.question_id = question_id
-        self.question_type = question_type
-        self.question_text = question_text
-        self.question_active = question_active
-        self.number_of_occurrences = 0
-        self.answer_success_ratio = 0.0
-
-
-class MultipleChoice(Question):
-
     def __init__(
         self,
         question_id,
         question_type,
         question_text,
+        answer,
         question_active,
-        correct_answer,
-        answer_choices,
+        choices=None,
     ):
-        super().__init__(question_id, question_type, question_text, question_active)
-        self.correct_answer = correct_answer
-        self.answer_choices = answer_choices
+        self.question_id = question_id
+        self.question_type = question_type
+        self.question_text = question_text
+        self.answer = answer
+        self.choices = choices
+        self.question_active = question_active
+        self.correct_answers = 0
+        self.number_of_occurrences = 0
+        self.answer_success_ratio = 0.0
 
-    def get_answer_options(self):
-        return self.answer_choices
+    @property
+    def question_type(self):
+        return self._question_type
 
-    def check_answer(self, user_answer):
-        if user_answer == self.correct_answer:
-            # Implement logic for logging occurences and success ratio
-            return True
-        else:
-            return False
+    @question_type.setter
+    def question_type(self, value):
+        if value not in ("multiple_choice", "free_form"):
+            raise ValueError(
+                "Invalid question type. Must be 'multiple_choice' or 'free_form'"
+            )
+        self._question_type = value
 
+    @property
+    def question_text(self):
+        return self._question_text
 
-class FreeForm(Question):
-
-    def __init__(
-        self, question_id, question_type, question_text, question_active, correct_answer
-    ):
-        super().__init__(
-            question_id, question_type, question_text, question_active, correct_answer
-        )
-        self.correct_answer = correct_answer
-
-    def check_answer(self, user_answer: str):
-        if user_answer == self.correct_answer:
-            # Implement logic for logging occurences and success ratio
-            return True
-        else:
-            return False
+    @question_text.setter
+    def question_text(self, value):
+        if not value:
+            raise ValueError("Question text cannot be empty")
+        self._question_text = value
 
 
 def load_questions(filename: str):
@@ -73,7 +62,7 @@ def save_question(filename: str, question: dict):
 
 
 def create_index():
-    questions = load_questions()
+    questions = load_questions("questions.json")
     if questions == []:
         return "#1"
     else:
@@ -85,5 +74,32 @@ def create_index():
         return new_index
 
 
-def answer_success_ratio(occurences: int):
+def check_answer(question: Question, user_answer: str):
+    question.number_of_occurrences += 1
+    if user_answer == question.answer:
+        question.correct_answers += 1
+        return True
+    else:
+        return False
 
+
+def success_percentage_calc(question: Question):
+    percentage = (question.correct_answers / question.number_of_occurrences) * 100
+    return f"{percentage:.0f}%"
+
+
+def test():
+    new_index = create_index()
+    new_question = {
+        "question_id": new_index,
+        "question_type": "multiple_choice",
+        "question_text": "What is the capital of Poland",
+        "answer": "Warsaw",
+        "choices": ["Berlin", "Prague", "Warsaw", "Madrid"],
+        "question_active": True,
+        "number_of_occurences": 0,
+        "correct_answers": 0,
+        "answer_success_percentage": "0%",
+    }
+
+    save_question("questions.json", new_question)
