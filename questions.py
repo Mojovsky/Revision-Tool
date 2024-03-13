@@ -44,6 +44,31 @@ class Question:
             raise ValueError("Question text cannot be empty")
         self._question_text = value
 
+    @property
+    def answer(self):
+        return self._answer
+
+    @answer.setter
+    def answer(self, value):
+        if not value:
+            raise ValueError("Answer text cannot be empty")
+        self._answer = value
+
+    @property
+    def choices(self):
+        return self._choices
+
+    @choices.setter
+    def choices(self, value):
+        if not isinstance(value, list):
+            raise ValueError("Choices must be a list of strings.")
+        if len(value) < 4:
+            raise ValueError("Choices must contain at least 4 options.")
+        for choice in value:
+            if not choice:
+                raise ValueError("Choices cannot contain empty strings.")
+        self._choices = value
+
 
 def load_questions(filename: str):
     try:
