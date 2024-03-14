@@ -12,7 +12,7 @@ class TestQuestion(unittest.TestCase):
         with patch("__main__.load_questions", return_value=[]):
 
             # Create a valid question object
-            question_id = create_index()
+            question_id = create_index("questions.json")
             question_text = "What is the capital of France?"
             question_type = "multiple_choice"
             answer = "Paris"
@@ -35,7 +35,7 @@ class TestQuestion(unittest.TestCase):
         with patch("__main__.load_questions", return_value=[]):
 
             # Create a question with empty question text (raises ValueError)
-            question_id = create_index()
+            question_id = create_index("questions.json")
             question_text = ""
             question_type = "multiple_choice"
             answer = "Paris"
@@ -51,7 +51,7 @@ class TestQuestion(unittest.TestCase):
         with patch("__main__.load_questions", return_value=[]):
 
             # Create a question with less than 4 choices (raises ValueError)
-            question_id = create_index()
+            question_id = create_index("questions.json")
             question_text = "What is the capital of France?"
             question_type = "multiple_choice"
             answer = "Paris"
@@ -67,7 +67,7 @@ class TestQuestion(unittest.TestCase):
         with patch("__main__.load_questions", return_value=[]):
 
             # Create a question with an empty choice (raises ValueError)
-            question_id = create_index()
+            question_id = create_index("questions.json")
             question_text = "What is the capital of France?"
             question_type = "multiple_choice"
             answer = "Paris"
