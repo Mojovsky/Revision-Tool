@@ -86,8 +86,8 @@ def save_question(filename: str, question: dict):
         json.dump(questions, f, indent=4)
 
 
-def create_index():
-    questions = load_questions("questions.json")
+def create_index(filename):
+    questions = load_questions(filename)
     if questions == []:
         return "#1"
     else:
@@ -114,7 +114,7 @@ def success_percentage_calc(question: Question):
 
 
 def test():
-    new_index = create_index()
+    new_index = create_index("questions.json")
     new_question = {
         "question_id": new_index,
         "question_type": "multiple_choice",
@@ -128,3 +128,6 @@ def test():
     }
 
     save_question("questions.json", new_question)
+
+
+test()
