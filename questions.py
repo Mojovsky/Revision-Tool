@@ -1,5 +1,4 @@
 from data_storage import save_question
-from data_manipulation import create_index
 
 
 class Question:
@@ -10,18 +9,17 @@ class Question:
         question_type,
         question_text,
         answer,
-        question_active,
-        choices=None,
+        choices,
     ):
         self.question_id = question_id
         self.question_type = question_type
         self.question_text = question_text
         self.answer = answer
         self.choices = choices
-        self.question_active = question_active
-        self.correct_answers = 0
-        self.number_of_occurrences = 0
-        self.answer_success_percentage = "0%"
+        self.answer_success_percentage = ("0%",)
+        self.question_active = (True,)
+        self.number_of_occurrences = (0,)
+        self.correct_answers = (0,)
 
     @property
     def question_type(self):
@@ -61,14 +59,15 @@ class Question:
 
     @choices.setter
     def choices(self, value):
-        if not isinstance(value, list):
-            raise ValueError("Choices must be a list of strings.")
-        if len(value) < 4:
-            raise ValueError("Choices must contain at least 4 options.")
-        for choice in value:
-            if not choice:
-                raise ValueError("Choices cannot contain empty strings.")
-        self._choices = value
+        if self.question_type == "multiple_choice":
+            if len(value) < 4:
+                raise ValueError("Choices must contain at least 4 options.")
+            for choice in value:
+                if not choice:
+                    raise ValueError("Choices cannot contain empty strings.")
+            self._choices = value
+        else:
+            pass
 
 
 def check_answer(question: Question, user_answer: str):
@@ -86,7 +85,7 @@ def success_percentage_calc(question: Question):
 
 
 def test():
-    new_index = create_index("questions.json")
+    new_index = "#3"
     new_question = {
         "question_id": new_index,
         "question_type": "multiple_choice",
