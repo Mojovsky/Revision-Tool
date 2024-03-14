@@ -16,10 +16,10 @@ class Question:
         self.question_text = question_text
         self.answer = answer
         self.choices = choices
-        self.answer_success_percentage = ("0%",)
-        self.question_active = (True,)
-        self.number_of_occurrences = (0,)
-        self.correct_answers = (0,)
+        self.answer_success_percentage = "0%"
+        self.question_active = True
+        self.number_of_occurrences = 0
+        self.correct_answers = 0
 
     @property
     def question_type(self):
