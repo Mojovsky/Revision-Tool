@@ -1,4 +1,5 @@
-import json
+from data_storage import save_question
+from data_manipulation import create_index
 
 
 class Question:
