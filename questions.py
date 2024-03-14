@@ -128,6 +128,3 @@ def test():
     }
 
     save_question("questions.json", new_question)
-
-
-test()
