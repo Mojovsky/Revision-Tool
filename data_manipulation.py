@@ -18,22 +18,25 @@ def create_index(filename):
 
 def add_question():
     filename = "questions.json"
+    question_id = create_index(filename)
+    question_type = get_question_type()
+    if question_type == "multiple_choice":
+        question_text, answer, choices = get_question(question_type)
+        choices.append(answer)
+    else:
+        question_text, answer = get_question(question_type)
+
     try:
-        question_id = create_index(filename)
-        question_type = get_question_type()
-        if question_type == "multiple_choice":
-            question_text, answer, choices = get_question(question_type)
-            new_question = Question(
-                question_id, question_type, question_text, answer, choices
-            )
-        else:
-            question_text, answer = get_question(question_type)
-            new_question = Question(question_id, question_type, question_text, answer)
-    except ValueError as e:
-        print(f"Error: {e}")
-    try:
+        new_question = Question(
+            question_id,
+            question_type,
+            question_text,
+            answer,
+            choices if question_type == "multiple_choice" else None,
+        )
         questions = load_questions(filename)
-        questions.append(new_question.__dict__)
+        new_question = new_question.__dict__
+        questions = new_question
         save_question(filename, questions)
         print("Question added successfully!")
     except FileNotFoundError as e:
