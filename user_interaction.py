@@ -11,7 +11,7 @@ def get_question_type(
             raise ValueError("Please choose one of the two options (1 or 2)")
 
 
-def get_question(question_type: str):
+def get_question(question_type):
     question_text = input("Please enter the question: ").strip()
     if not question_text:
         raise ValueError("Question cannot be empty")
@@ -29,5 +29,5 @@ def get_question(question_type: str):
                 else:
                     raise ValueError("Invalid choice cannot be empty")
 
-        return question_type, question_text, answer, choices
-    return question_type, question_text, answer
+        return question_text, answer, choices
+    return question_text, answer
