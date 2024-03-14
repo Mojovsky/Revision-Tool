@@ -70,35 +70,6 @@ class Question:
         self._choices = value
 
 
-def load_questions(filename: str):
-    try:
-        with open(filename, "r") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Error: file {filename} not found")
-
-
-def save_question(filename: str, question: dict):
-    questions = load_questions(filename)
-    questions.append(question)
-
-    with open(filename, "w") as f:
-        json.dump(questions, f, indent=4)
-
-
-def create_index(filename):
-    questions = load_questions(filename)
-    if questions == []:
-        return "#1"
-    else:
-        for question in questions:
-            question_id = question["question_id"].strip("#")
-            highest_id = int(question_id)
-
-        new_index = f"#{highest_id + 1}"
-        return new_index
-
-
 def check_answer(question: Question, user_answer: str):
     question.number_of_occurrences += 1
     if user_answer == question.answer:
