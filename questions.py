@@ -21,7 +21,7 @@ class Question:
         self.question_active = question_active
         self.correct_answers = 0
         self.number_of_occurrences = 0
-        self.answer_success_ratio = 0.0
+        self.answer_success_percentage = "0%"
 
     @property
     def question_type(self):
