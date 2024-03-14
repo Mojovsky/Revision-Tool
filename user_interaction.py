@@ -31,6 +31,3 @@ def get_question(question_type: str):
 
         return question_type, question_text, answer, choices
     return question_type, question_text, answer
-
-
-print(get_question("multiple_choice"))
