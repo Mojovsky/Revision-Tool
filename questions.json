@@ -6,7 +6,7 @@
     "answer": "London",
     "choices": ["Paris", "Berlin", "Madrid", "London"],
     "question_active": false,
-    "number_of_occurences": 0,
+    "number_of_occurrences": 0,
     "correct_answers": 0,
     "answer_success_percentage": "0%"
   },
