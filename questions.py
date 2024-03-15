@@ -72,7 +72,7 @@ class Question:
 
 def check_answer(question: Question, user_answer: str):
     question.number_of_occurrences += 1
-    if user_answer == question.answer:
+    if user_answer.lower() == str(question.answer).lower():
         question.correct_answers += 1
         return True
     else:
@@ -84,7 +84,7 @@ def success_percentage_calc(question: Question):
     return f"{percentage:.0f}%"
 
 
-def test():
+#def test():
     new_index = "#3"
     new_question = {
         "question_id": new_index,
