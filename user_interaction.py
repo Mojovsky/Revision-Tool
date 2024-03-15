@@ -1,5 +1,5 @@
 def get_question_type(
-    prompt: str = "Enter your choice by appropriate number\n1. Multiple choice question\n2. Free form question\n\n",
+    prompt: str = "Enter your choice by appropriate number\n1. Multiple choice question\n2. Free form question\n",
 ):
     while True:
         user_choice = input(prompt).strip()
