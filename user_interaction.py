@@ -31,3 +31,7 @@ def get_question(question_type):
 
         return question_text, answer, choices
     return question_text, answer
+
+
+def line_break():
+    return "---------------------------------------------"
