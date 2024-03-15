@@ -1,6 +1,6 @@
 from questions import Question
 from data_storage import load_questions, save_question
-from user_interaction import get_question_type, get_question
+from user_interaction import get_question_type, get_question, line_break
 
 
 def create_index(filename):
@@ -43,4 +43,18 @@ def add_question():
         print(f"Error loading or saving questions: {e}")
 
 
-add_question()
+def show_questions():
+    l_break = line_break()
+    question_list = load_questions("questions.json")
+    for data in question_list:
+        question_id = data["question_id"]
+        question_text = data["question_text"]
+        question_active = data["question_active"]
+        question_status = "Active" if question_active else "Disabled"
+        number_of_occurrences = data["number_of_occurrences"]
+        answer_success_percentage = data["answer_success_percentage"]
+
+        print(f"{l_break}\nQuestion ID: {question_id}\nQuestion text: {question_text}\nQuestion stauts: {question_status}\nNumber of times question appeared: {number_of_occurrences}\nSuccess percentage: {answer_success_percentage}\n{l_break}")
+
+
+show_questions()
