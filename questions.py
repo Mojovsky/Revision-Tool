@@ -70,13 +70,14 @@ class Question:
             pass
 
 
-def check_answer(question: Question, user_answer: str):
-    question.number_of_occurrences += 1
-    if user_answer.lower() == str(question.answer).lower():
-        question.correct_answers += 1
-        return True
-    else:
-        return False
+    def check_answer(self, user_answer: str):
+        self.number_of_occurrences += 1
+        if user_answer.lower() == str(self.answer).lower():
+            self.correct_answers += 1
+            return True
+        else:
+            return False
+
 
 
 
