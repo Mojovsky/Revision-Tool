@@ -65,4 +65,9 @@ def change_question_status(question_id: str):
     print("Question enabled/disabled successfully!")
 
 
+def success_percentage_calc(question: Question):
+    percentage = (question.correct_answers / question.number_of_occurrences) * 100
+    return f"{percentage:.0f}%"
+
+
 change_question_status("#1")

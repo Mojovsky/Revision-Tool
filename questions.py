@@ -79,10 +79,6 @@ def check_answer(question: Question, user_answer: str):
         return False
 
 
-def success_percentage_calc(question: Question):
-    percentage = (question.correct_answers / question.number_of_occurrences) * 100
-    return f"{percentage:.0f}%"
-
 
 #def test():
     new_index = "#3"
