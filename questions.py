@@ -127,9 +127,10 @@ class QuestionManipulation:
 
     def __init__(self, filename: str):
         self.storage = QuestionStorage(filename)
-    
 
-    def create_question(self):
+
+
+    def create_new_question(self):
         try:
             question_id = self.storage._create_index()
             question_type = get_question_type()
@@ -193,7 +194,7 @@ def main():
     question_manipulation = QuestionManipulation("questions.json")
     question_storage = QuestionStorage("questions.json")
     questions = question_manipulation.storage.questions
-    #question_manipulation.create_question()
+    #question_manipulation.create_new_question()
     #question_manipulation.change_question_status("#4")
     #question_manipulation.show_questions()
     question_data = question_storage.load_questions()
