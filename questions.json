@@ -1,10 +1,10 @@
 [
   {
     "question_id": "#1",
-    "question_type": "multiple_choice",
-    "question_text": "What is the capital of England?",
-    "answer": "London",
-    "choices": ["Paris", "Berlin", "Madrid", "London"],
+    "_question_type": "multiple_choice",
+    "_question_text": "What is the capital of England?",
+    "_answer": "London",
+    "_choices": ["Paris", "Berlin", "Madrid", "London"],
     "question_active": false,
     "number_of_occurrences": 6,
     "correct_answers": 2,
@@ -12,9 +12,9 @@
   },
   {
     "question_id": "#2",
-    "question_type": "free_form",
-    "question_text": "What is the capital of France?",
-    "answer": "Paris",
+    "_question_type": "free_form",
+    "_question_text": "What is the capital of France?",
+    "_answer": "Paris",
     "question_active": true,
     "number_of_occurrences": 2,
     "correct_answers": 1,
