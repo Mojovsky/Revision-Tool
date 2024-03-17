@@ -3,18 +3,29 @@ from user_interaction import get_question_type, get_question, line_break
 
 
 class Question:
-    def __init__(self, question_id, question_type, question_text, answer, choices=None):
+    def __init__(
+        self,
+        question_id,
+        question_type,
+        question_text,
+        answer,
+        choices=None,
+        answer_success_percentage,
+        question_active,
+        number_of_occurrences,
+        correct_answers,
+        
+    ):
         self.question_id = question_id
         self.question_type = question_type
         self.question_text = question_text
         self.answer = answer
-        self.choices = choices  # Optional for multiple-choice questions
+        self.choices = choices
 
-        # Initialize statistics within the class
-        self.answer_success_percentage = "0%"
-        self.question_active = True
-        self.number_of_occurrences = 0
-        self.correct_answers = 0
+        self.answer_success_percentage = answer_success_percentage
+        self.question_active = question_active
+        self.number_of_occurrences = number_of_occurrences
+        self.correct_answers = correct_answers
 
     @property
     def question_type(self):
@@ -128,8 +139,22 @@ class QuestionManipulation:
             else:
                 question_text, answer = get_question(question_type)
                 choices = None
+            answer_success_percentage="0%"
+            question_active=True
+            number_of_occurrences=0
+            correct_answers=0
 
-            new_question = Question(question_id, question_type, question_text, answer, choices)
+            new_question = Question(
+            question_id,
+            question_type,
+            question_text,
+            answer,
+            choices,
+            question_active,
+            number_of_occurrences,
+            correct_answers,
+            answer_success_percentage,
+            )
             self.storage.add_question(new_question)
             print("Question added successfully!")
         except FileNotFoundError as e:
@@ -147,12 +172,19 @@ class QuestionManipulation:
 
     def show_questions(self):
         l_break = line_break()
-        for question in self.storage.questions:
-            question_status = "Active" if question.question_active else "Disabled"
+        for data in self.storage.questions:
+            question_id = data["question_id"]
+            question_text = data["question_text"]
+            question_active = data["question_active"]
+            question_status = "Active" if question_active else "Disabled"
+            number_of_occurrences = data["number_of_occurrences"]
+            answer_success_percentage = data["answer_success_percentage"]
 
-            print(f"{l_break}\nQuestion ID: {question.question_id}\nQuestion text: {question.question_text}\nQuestion stauts: {question_status}\nNumber of times question appeared: {question.number_of_occurrences}\nSuccess percentage: {question.answer_success_percentage}\n{l_break}")
+            print(f"{l_break}\nQuestion ID: {question_id}\nQuestion text: {question_text}\nQuestion stauts: {question_status}\nNumber of times question appeared: {number_of_occurrences}\nSuccess percentage: {answer_success_percentage}\n{l_break}")
 
-    
+    def success_percentage_calc(self, question: Question):
+        percentage = (question.correct_answers / question.number_of_occurrences) * 100
+        return f"{percentage:.0f}%"
 
 
 
@@ -161,10 +193,21 @@ def main():
     question_manipulation = QuestionManipulation("questions.json")
     question_storage = QuestionStorage("questions.json")
     questions = question_manipulation.storage.questions
-    #question_manipulation.create_question()
-    #question_storage.update_question("#2", {"question_active": True})
+    question_manipulation.create_question()
     #question_manipulation.change_question_status("#2")
-    question_manipulation.show_questions()
+    #question_manipulation.show_questions()
+    #question_data = question_storage.load_questions()
+    #first_question_data = question_data[0]
+    #first_question = Question(
+        #first_question_data["question_id"],
+        #first_question_data["question_type"],
+        #first_question_data["question_text"],
+        #first_question_data["answer"],
+        #first_question_data.get("choices", None),
+    #)
+    #new_percent = question_manipulation.success_percentage_calc(first_question)
+    #question_storage.update_question(first_question.question_id, {first_question.answer_success_percentage: new_percent})
+
 
 
 if __name__ == "__main__":
