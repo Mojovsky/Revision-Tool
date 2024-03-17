@@ -6,8 +6,8 @@
     "answer": "London",
     "choices": ["Paris", "Berlin", "Madrid", "London"],
     "question_active": false,
-    "number_of_occurrences": 0,
-    "correct_answers": 0,
+    "number_of_occurrences": 6,
+    "correct_answers": 2,
     "answer_success_percentage": "0%"
   },
   {
@@ -16,8 +16,8 @@
     "question_text": "What is the capital of France?",
     "answer": "Paris",
     "question_active": true,
-    "number_of_occurrences": 0,
-    "correct_answers": 0,
+    "number_of_occurrences": 2,
+    "correct_answers": 1,
     "answer_success_percentage": "0%"
   }
 ]
