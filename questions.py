@@ -206,6 +206,11 @@ class QuestionManipulation:
         return active
 
 
+    def calculate_weight(self, answer_success_percentage):
+        percentage_value = int(answer_success_percentage.strip("%"))
+        return 1.0 / (percentage_value + 0.1)
+
+
 def main():
     question_manipulation = QuestionManipulation("questions.json")
     # question_storage = QuestionStorage("questions.json")
