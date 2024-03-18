@@ -103,7 +103,6 @@ class Question:
         return cls(**mapped_data)
 
 
-
 class QuestionStorage:
 
     def __init__(self, filename: str):
@@ -131,7 +130,6 @@ class QuestionStorage:
     def _create_index(self):
         return f"#{len(self.questions) + 1}"
     
-
 
 class QuestionManipulation:
 
@@ -191,12 +189,15 @@ class QuestionManipulation:
 
 
     def update_question_status(self, question_id: str):
-        for index, data in enumerate(self.storage.questions):
-            if data["question_id"] == question_id:
-                self.storage.questions[index]["question_active"] = not data["question_active"]
-                self.storage.save_questions(self.storage.questions)
-                break
-        print("Question enabled/disabled successfully!")
+        try:
+            for index, data in enumerate(self.storage.questions):
+                if data["question_id"] == question_id:
+                    self.storage.questions[index]["question_active"] = not data["question_active"]
+                    self.storage.save_questions(self.storage.questions)
+                    break
+            print("Question enabled/disabled successfully!")
+        except IndexError:
+            raise IndexError("Incorrect index number")
 
 
     def check_active_questions(self):
@@ -210,6 +211,7 @@ class QuestionManipulation:
     def calculate_weight(self, answer_success_percentage):
         percentage_value = int(answer_success_percentage.strip("%"))
         return 1.0 / (percentage_value + 0.1)
+
 
 def save_results(result):
     with open("results.txt", "a") as file:
