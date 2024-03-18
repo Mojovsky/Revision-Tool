@@ -7,8 +7,7 @@ def practice_mode():
     manipulation = QuestionManipulation("questions.json")
 
     if manipulation.check_active_questions() < 5:
-        print("Not enough questions to proceed. Please add more questions.")
-        return
+        raise ValueError("Not enough questions to proceed. Please add more questions.")
     
     while True:
         question_list = storage.load_questions()
@@ -39,8 +38,7 @@ def test_mode(num_of_questions: int):
     questions_correct = 0
 
     if manipulation.check_active_questions() < num_of_questions:
-        print("Not enough active questions to proceed. Please add more questions.")
-        return
+        raise ValueError("Not enough active questions to proceed. Please add more questions.")
     
     while True:
         question_list = storage.load_questions()
