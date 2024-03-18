@@ -75,14 +75,30 @@ class Question:
         else:
             pass
 
+    def update_statistics(self, is_correct: bool):
+        self.number_of_occurrences += 1
+        if is_correct:
+            self.correct_answers += 1
 
     def check_answer(self, user_answer: str):
-        self.number_of_occurrences += 1
-        if user_answer.lower() == str(self.answer).lower():
-            self.correct_answers += 1
-            return True
-        else:
-            return False
+        self.update_statistics(user_answer.lower() == str(self.answer).lower())
+        return user_answer.lower() == str(self.answer).lower()
+
+    @classmethod
+    def map_values(cls, data):
+        mapped_data = {
+            "question_id": data.get("question_id"),
+            "question_type": data.get("_question_type"),
+            "question_text": data.get("_question_text"),
+            "answer": data.get("_answer"),
+            "choices": data.get("_choices"),
+            "question_active": data.get("question_active"),
+            "number_of_occurrences": data.get("number_of_occurrences"),
+            "correct_answers": data.get("correct_answers"),
+            "answer_success_percentage": data.get("answer_success_percentage"),
+        }
+        return cls(**mapped_data)
+
 
 
 class QuestionStorage:
@@ -99,6 +115,9 @@ class QuestionStorage:
         except FileNotFoundError:
             raise FileNotFoundError(f"Error: file {self.filename} not found")
 
+    def save_questions(self, question_list):
+        with open(self.filename, "w") as f:
+            json.dump(question_list, f, indent=4)
 
 
     def add_question(self, new_question: Question):
@@ -122,12 +141,10 @@ class QuestionStorage:
                 json.dump(self.questions, f, indent = 4)
 
 
-
 class QuestionManipulation:
 
     def __init__(self, filename: str):
         self.storage = QuestionStorage(filename)
-
 
 
     def create_new_question(self):
@@ -162,16 +179,7 @@ class QuestionManipulation:
             print(f"Error loading or saving questions: {e}")
 
 
-    def change_question_status(self, question_id: str):
-        for index, data in enumerate(self.storage.questions):
-            if data["question_id"] == question_id:
-                self.storage.questions[index]["question_active"] = not data["question_active"]
-                new_status = data["question_active"]
-        self.storage.update_question(question_id, "question_active", new_status)
-        print("Question enabled/disabled successfully!")
-
-
-    def show_questions(self):
+    def show_all_questions(self):
         l_break = line_break()
         for data in self.storage.questions:
             question_id = data["question_id"]
@@ -183,35 +191,44 @@ class QuestionManipulation:
 
             print(f"{l_break}\nQuestion ID: {question_id}\nQuestion text: {question_text}\nQuestion status: {question_status}\nNumber of times question appeared: {number_of_occurrences}\nSuccess percentage: {answer_success_percentage}\n{l_break}")
 
+
     def success_percentage_calc(self, question: Question):
         percentage = (question.correct_answers / question.number_of_occurrences) * 100
         return f"{percentage:.0f}%"
 
 
+    def update_question_status(self, question_id: str):
+            for index, data in enumerate(self.storage.questions):
+                if data["question_id"] == question_id:
+                    self.storage.questions[index]["question_active"] = not data["question_active"]
+                    new_status = data["question_active"]
+            self.storage.update_question(question_id, "question_active", new_status)
+            print("Question enabled/disabled successfully!")
+
 
 
 def main():
     question_manipulation = QuestionManipulation("questions.json")
-    question_storage = QuestionStorage("questions.json")
-    questions = question_manipulation.storage.questions
-    #question_manipulation.create_new_question()
-    #question_manipulation.change_question_status("#4")
-    #question_manipulation.show_questions()
-    question_data = question_storage.load_questions()
-    first_question_data = question_data[4]
-    first_question = Question(
-        first_question_data["question_id"],
-        first_question_data["_question_type"],
-        first_question_data["_question_text"],
-        first_question_data["_answer"],
-        first_question_data["question_active"],
-        first_question_data["number_of_occurrences"],
-        first_question_data["correct_answers"],
-        first_question_data["answer_success_percentage"],
-        first_question_data["_choices"]
-    )
-    new_percent = question_manipulation.success_percentage_calc(first_question)
-    question_storage.update_question(first_question.question_id, "answer_success_percentage", new_percent)
+    # question_storage = QuestionStorage("questions.json")
+    # questions = question_manipulation.storage.questions
+    question_manipulation.create_new_question()
+    # #question_manipulation.change_question_status("#4")
+    # #question_manipulation.show_questions()
+    # question_data = question_storage.load_questions()
+    # first_question_data = question_data[4]
+    # first_question = Question(
+    #     first_question_data["question_id"],
+    #     first_question_data["_question_type"],
+    #     first_question_data["_question_text"],
+    #     first_question_data["_answer"],
+    #     first_question_data["question_active"],
+    #     first_question_data["number_of_occurrences"],
+    #     first_question_data["correct_answers"],
+    #     first_question_data["answer_success_percentage"],
+    #     first_question_data["_choices"]
+    # )
+    # new_percent = question_manipulation.success_percentage_calc(first_question)
+    # question_storage.update_question(first_question.question_id, "answer_success_percentage", new_percent)
 
 
 
