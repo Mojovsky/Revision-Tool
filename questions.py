@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from user_interaction import get_question_type, get_question, line_break
 
 
@@ -210,32 +211,7 @@ class QuestionManipulation:
         percentage_value = int(answer_success_percentage.strip("%"))
         return 1.0 / (percentage_value + 0.1)
 
-
-def main():
-    question_manipulation = QuestionManipulation("questions.json")
-    # question_storage = QuestionStorage("questions.json")
-    # questions = question_manipulation.storage.questions
-    #question_manipulation.create_new_question()
-    #question_manipulation.update_question_status("#4")
-    # #question_manipulation.show_questions()
-    # question_data = question_storage.load_questions()
-    # first_question_data = question_data[4]
-    # first_question = Question(
-    #     first_question_data["question_id"],
-    #     first_question_data["_question_type"],
-    #     first_question_data["_question_text"],
-    #     first_question_data["_answer"],
-    #     first_question_data["question_active"],
-    #     first_question_data["number_of_occurrences"],
-    #     first_question_data["correct_answers"],
-    #     first_question_data["answer_success_percentage"],
-    #     first_question_data["_choices"]
-    # )
-    # new_percent = question_manipulation.success_percentage_calc(first_question)
-    # question_storage.update_question(first_question.question_id, "answer_success_percentage", new_percent)
-    print(question_manipulation.check_active_questions())
-
-
-
-if __name__ == "__main__":
-    main()
+def save_results(result):
+    with open("results.txt", "a") as file:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        file.write(f"{timestamp}: {result}\n")
