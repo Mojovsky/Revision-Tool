@@ -206,6 +206,10 @@ class QuestionManipulation:
             print("Question enabled/disabled successfully!")
 
 
+    def update_percentage_status(self, question: Question):
+        new_percent = self.success_percentage_calc(question)
+        self.storage.update_question(question.question_id, "answer_success_percentage", new_percent)
+
 
 def main():
     question_manipulation = QuestionManipulation("questions.json")
