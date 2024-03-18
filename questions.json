@@ -60,5 +60,31 @@
         "number_of_occurrences": 24,
         "correct_answers": 23,
         "answer_success_percentage": "96%"
+    },
+    {
+        "question_id": "#6",
+        "_question_type": "free_form",
+        "_question_text": "What is the capital of Norway?",
+        "_answer": "Oslo",
+        "question_active": true,
+        "number_of_occurrences": 0,
+        "correct_answers": 0,
+        "answer_success_percentage": "0%"
+    },
+    {
+        "question_id": "#7",
+        "_question_type": "multiple_choice",
+        "_question_text": "What is the capital of Ukraine?",
+        "_answer": "Kiev",
+        "_choices": [
+            "Warsaw",
+            "Oslo",
+            "Sofia",
+            "Kiev"
+        ],
+        "question_active": true,
+        "number_of_occurrences": 0,
+        "correct_answers": 0,
+        "answer_success_percentage": "0%"
     }
 ]
