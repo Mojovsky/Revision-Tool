@@ -189,15 +189,21 @@ class QuestionManipulation:
         return f"{percentage:.0f}%"
 
 
-
     def update_question_status(self, question_id: str):
-            for index, data in enumerate(self.storage.questions):
-                if data["question_id"] == question_id:
-                    self.storage.questions[index]["question_active"] = not data["question_active"]
-                    self.storage.save_questions(self.storage.questions)
-                    break
-            print("Question enabled/disabled successfully!")
+        for index, data in enumerate(self.storage.questions):
+            if data["question_id"] == question_id:
+                self.storage.questions[index]["question_active"] = not data["question_active"]
+                self.storage.save_questions(self.storage.questions)
+                break
+        print("Question enabled/disabled successfully!")
 
+
+    def check_active_questions(self):
+        active = 0
+        for index, data in enumerate(self.storage.questions):
+            if data["question_active"] == True:
+                active += 1
+        return active
 
 
 def main():
@@ -205,7 +211,7 @@ def main():
     # question_storage = QuestionStorage("questions.json")
     # questions = question_manipulation.storage.questions
     #question_manipulation.create_new_question()
-    question_manipulation.update_question_status("#4")
+    #question_manipulation.update_question_status("#4")
     # #question_manipulation.show_questions()
     # question_data = question_storage.load_questions()
     # first_question_data = question_data[4]
@@ -222,6 +228,7 @@ def main():
     # )
     # new_percent = question_manipulation.success_percentage_calc(first_question)
     # question_storage.update_question(first_question.question_id, "answer_success_percentage", new_percent)
+    print(question_manipulation.check_active_questions())
 
 
 
