@@ -6,9 +6,9 @@
     "_answer": "London",
     "_choices": ["Paris", "Berlin", "Madrid", "London"],
     "question_active": true,
-    "number_of_occurrences": 0,
-    "correct_answers": 0,
-    "answer_success_percentage": "0%"
+    "number_of_occurrences": 10,
+    "correct_answers": 9,
+    "answer_success_percentage": "90%"
   },
   {
     "question_id": "#2",
@@ -16,9 +16,9 @@
     "_question_text": "What is the capital of France?",
     "_answer": "Paris",
     "question_active": true,
-    "number_of_occurrences": 0,
-    "correct_answers": 0,
-    "answer_success_percentage": "0%"
+    "number_of_occurrences": 3,
+    "correct_answers": 3,
+    "answer_success_percentage": "100%"
   },
   {
     "question_id": "#3",
@@ -26,9 +26,9 @@
     "_question_text": "What is the capital of Italy?",
     "_answer": "Rome",
     "question_active": true,
-    "number_of_occurrences": 0,
-    "correct_answers": 0,
-    "answer_success_percentage": "0%"
+    "number_of_occurrences": 4,
+    "correct_answers": 3,
+    "answer_success_percentage": "75%"
   },
   {
     "question_id": "#4",
@@ -37,9 +37,9 @@
     "_answer": "Warsaw",
     "_choices": ["Berlin", "Madrid", "London", "Warsaw"],
     "question_active": true,
-    "number_of_occurrences": 0,
-    "correct_answers": 0,
-    "answer_success_percentage": "0%"
+    "number_of_occurrences": 1,
+    "correct_answers": 1,
+    "answer_success_percentage": "100%"
   },
   {
     "question_id": "#5",
@@ -47,8 +47,8 @@
     "_question_text": "What is the capital of Germany?",
     "_answer": "Berlin",
     "question_active": true,
-    "number_of_occurrences": 0,
-    "correct_answers": 0,
-    "answer_success_percentage": "0%"
+    "number_of_occurrences": 2,
+    "correct_answers": 2,
+    "answer_success_percentage": "100%"
   }
 ]
