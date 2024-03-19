@@ -18,7 +18,7 @@ def main():
             
 
 def display_menu():
-    print("\nChoose one of the following options:")
+    print("\nChoose one of the following options by referencing its index: \n")
     print("1. Add questions")
     print("2. View questions/stats")
     print("3. Disable/enable questions")
