@@ -11,8 +11,8 @@
             "London"
         ],
         "question_active": true,
-        "number_of_occurrences": 37,
-        "correct_answers": 34,
+        "number_of_occurrences": 38,
+        "correct_answers": 35,
         "answer_success_percentage": "92%"
     },
     {
@@ -31,9 +31,9 @@
         "_question_text": "What is the capital of Italy?",
         "_answer": "Rome",
         "question_active": true,
-        "number_of_occurrences": 33,
-        "correct_answers": 24,
-        "answer_success_percentage": "73%"
+        "number_of_occurrences": 34,
+        "correct_answers": 25,
+        "answer_success_percentage": "74%"
     },
     {
         "question_id": "#4",
@@ -47,9 +47,9 @@
             "Warsaw"
         ],
         "question_active": true,
-        "number_of_occurrences": 50,
-        "correct_answers": 23,
-        "answer_success_percentage": "46%"
+        "number_of_occurrences": 51,
+        "correct_answers": 24,
+        "answer_success_percentage": "47%"
     },
     {
         "question_id": "#5",
@@ -57,9 +57,9 @@
         "_question_text": "What is the capital of Germany?",
         "_answer": "Berlin",
         "question_active": true,
-        "number_of_occurrences": 31,
-        "correct_answers": 28,
-        "answer_success_percentage": "90%"
+        "number_of_occurrences": 32,
+        "correct_answers": 29,
+        "answer_success_percentage": "91%"
     },
     {
         "question_id": "#6",
@@ -83,8 +83,8 @@
             "Kiev"
         ],
         "question_active": true,
-        "number_of_occurrences": 5,
-        "correct_answers": 5,
+        "number_of_occurrences": 6,
+        "correct_answers": 6,
         "answer_success_percentage": "100%"
     },
     {
@@ -109,8 +109,8 @@
             "Madrid"
         ],
         "question_active": true,
-        "number_of_occurrences": 0,
-        "correct_answers": 0,
-        "answer_success_percentage": "0%"
+        "number_of_occurrences": 3,
+        "correct_answers": 3,
+        "answer_success_percentage": "100%"
     }
 ]
