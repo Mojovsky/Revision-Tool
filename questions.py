@@ -165,9 +165,9 @@ class QuestionManipulation:
             choices,
             )
             self.storage.add_question(new_question)
-            print("Question added successfully!")
+            
         except FileNotFoundError as e:
-            print(f"Error loading or saving questions: {e}")
+            raise FileNotFoundError(f"Error loading or saving questions: {e}")
 
 
     def show_all_questions(self):
@@ -195,7 +195,6 @@ class QuestionManipulation:
                     self.storage.questions[index]["question_active"] = not data["question_active"]
                     self.storage.save_questions(self.storage.questions)
                     break
-            print("Question enabled/disabled successfully!")
         except IndexError:
             raise IndexError("Incorrect index number")
 
