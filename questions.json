@@ -96,5 +96,21 @@
         "number_of_occurrences": 12,
         "correct_answers": 10,
         "answer_success_percentage": "83%"
+    },
+    {
+        "question_id": "#9",
+        "_question_type": "multiple_choice",
+        "_question_text": "What is the capital of Spain?",
+        "_answer": "Madrid",
+        "_choices": [
+            "Barcelona",
+            "Paris",
+            "Rome",
+            "Madrid"
+        ],
+        "question_active": true,
+        "number_of_occurrences": 0,
+        "correct_answers": 0,
+        "answer_success_percentage": "0%"
     }
 ]
