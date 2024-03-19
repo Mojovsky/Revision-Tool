@@ -10,3 +10,6 @@ This revision tool program is designed to assist with studying and reviewing var
 - Test Mode: Run a number of question chosen by you, giving you a score at the end.
 - Progress Tracking: Monitor your progress and see your improvement over time. Both modes keep statistics, Test Mode also keeps your score records!
 - User-Friendly Controls: The program is intuitive and easy-to-use.
+
+Part 3 - War:
+https://github.com/Mojovsky/War
