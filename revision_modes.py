@@ -24,8 +24,14 @@ def practice_mode():
             break
 
         elif trigger == "":
-            user_input = input(question_obj._question_text)
-            print("Correct!" if Question.check_answer(question_obj, user_input) else "False")
+            choices = ""
+            if hasattr(question_obj, "choices"):
+                choices = "   ".join(question_obj.choices)
+                print(f"{question_obj._question_text}\n{choices}")
+            else:
+                print(question_obj._question_text)
+            user_input = input()
+            print("\nCorrect!\n" if Question.check_answer(question_obj, user_input) else "\nFalse\n")
             selected_question.update(question_obj.__dict__)
 
         storage.save_questions(question_list)
@@ -51,24 +57,27 @@ def test_mode(num_of_questions: int):
                 selected_questions.append(selected_question)
 
         for question in selected_questions:
-            trigger = input("Press ENTER to continue or type DONE to end the program. ")
-
-            if trigger.lower() == "done":
-                break
-
-            elif trigger == "":
-                question_obj = Question.map_values(question)
-                user_input = input(question_obj._question_text)
-                questions_asked += 1
-                if Question.check_answer(question_obj, user_input):
-                    questions_correct += 1
-                    print("Correct!")
-                else:
-                    print("False")
-                question.update(question_obj.__dict__)
+            question_obj = Question.map_values(question)
+            choices = ""
+            if hasattr(question_obj, "choices"):
+                choices = "   ".join(question_obj.choices)
+                print(f"{question_obj._question_text}\n{choices}")
+            else:
+                print(question_obj._question_text)
+            user_input = input()
+            questions_asked += 1
+            if Question.check_answer(question_obj, user_input):
+                questions_correct += 1
+                print("\nCorrect!\n")
+            else:
+                print("\nFalse\n")
+            question.update(question_obj.__dict__)
 
             storage.save_questions(question_list)
         break
     result = f"Score: {questions_correct} out of {questions_asked}"
+    print(result)
     save_results(result)
+
+
 
