@@ -11,9 +11,9 @@
             "London"
         ],
         "question_active": true,
-        "number_of_occurrences": 31,
-        "correct_answers": 29,
-        "answer_success_percentage": "94%"
+        "number_of_occurrences": 37,
+        "correct_answers": 34,
+        "answer_success_percentage": "92%"
     },
     {
         "question_id": "#2",
@@ -21,9 +21,9 @@
         "_question_text": "What is the capital of France?",
         "_answer": "Paris",
         "question_active": true,
-        "number_of_occurrences": 22,
-        "correct_answers": 21,
-        "answer_success_percentage": "95%"
+        "number_of_occurrences": 34,
+        "correct_answers": 31,
+        "answer_success_percentage": "91%"
     },
     {
         "question_id": "#3",
@@ -31,9 +31,9 @@
         "_question_text": "What is the capital of Italy?",
         "_answer": "Rome",
         "question_active": true,
-        "number_of_occurrences": 21,
-        "correct_answers": 17,
-        "answer_success_percentage": "81%"
+        "number_of_occurrences": 33,
+        "correct_answers": 24,
+        "answer_success_percentage": "73%"
     },
     {
         "question_id": "#4",
@@ -47,9 +47,9 @@
             "Warsaw"
         ],
         "question_active": true,
-        "number_of_occurrences": 37,
-        "correct_answers": 12,
-        "answer_success_percentage": "32%"
+        "number_of_occurrences": 50,
+        "correct_answers": 23,
+        "answer_success_percentage": "46%"
     },
     {
         "question_id": "#5",
@@ -57,9 +57,9 @@
         "_question_text": "What is the capital of Germany?",
         "_answer": "Berlin",
         "question_active": true,
-        "number_of_occurrences": 24,
-        "correct_answers": 23,
-        "answer_success_percentage": "96%"
+        "number_of_occurrences": 31,
+        "correct_answers": 28,
+        "answer_success_percentage": "90%"
     },
     {
         "question_id": "#6",
@@ -67,9 +67,9 @@
         "_question_text": "What is the capital of Norway?",
         "_answer": "Oslo",
         "question_active": true,
-        "number_of_occurrences": 0,
-        "correct_answers": 0,
-        "answer_success_percentage": "0%"
+        "number_of_occurrences": 22,
+        "correct_answers": 11,
+        "answer_success_percentage": "50%"
     },
     {
         "question_id": "#7",
@@ -83,8 +83,18 @@
             "Kiev"
         ],
         "question_active": true,
-        "number_of_occurrences": 0,
-        "correct_answers": 0,
-        "answer_success_percentage": "0%"
+        "number_of_occurrences": 5,
+        "correct_answers": 5,
+        "answer_success_percentage": "100%"
+    },
+    {
+        "question_id": "#8",
+        "_question_type": "free_form",
+        "_question_text": "What is the capital of Finland?",
+        "_answer": "Helsinki",
+        "question_active": true,
+        "number_of_occurrences": 12,
+        "correct_answers": 10,
+        "answer_success_percentage": "83%"
     }
 ]
