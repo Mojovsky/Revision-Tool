@@ -189,14 +189,13 @@ class QuestionManipulation:
 
 
     def update_question_status(self, question_id: str):
-        try:
-            for index, data in enumerate(self.storage.questions):
-                if data["question_id"] == question_id:
-                    self.storage.questions[index]["question_active"] = not data["question_active"]
-                    self.storage.save_questions(self.storage.questions)
-                    break
-        except IndexError:
-            raise IndexError("Incorrect index number")
+        for index, data in enumerate(self.storage.questions):
+            if data["question_id"] == question_id:
+                self.storage.questions[index]["question_active"] = not data["question_active"]
+                self.storage.save_questions(self.storage.questions)
+                break
+            else:
+                raise IndexError("Incorrect index number")
 
 
     def check_active_questions(self):
